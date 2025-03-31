@@ -1,4 +1,4 @@
-package com.learn.tobyspring.user.dao;
+package com.learn.tobyspring.chapter1.user.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,6 +1,6 @@
-package com.learn.tobyspring.user.dao;
+package com.learn.tobyspring.chapter1.user.dao;
 
-import com.learn.tobyspring.user.domain.User;
+import com.learn.tobyspring.chapter1.user.domain.User;
 
 import javax.sql.DataSource;
 import java.sql.*;

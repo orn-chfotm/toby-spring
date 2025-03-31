@@ -1,7 +1,7 @@
-package com.learn.tobyspring.user.test;
+package com.learn.tobyspring.chapter1.user.test;
 
-import com.learn.tobyspring.config.DaoConfig;
-import com.learn.tobyspring.user.dao.UserDao;
+import com.learn.tobyspring.chapter1.config.DaoConfig;
+import com.learn.tobyspring.chapter1.user.dao.UserDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

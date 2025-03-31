@@ -1,9 +1,6 @@
-package com.learn.tobyspring.config;
+package com.learn.tobyspring.chapter1.config;
 
-import com.learn.tobyspring.user.dao.ConnectionMaker;
-import com.learn.tobyspring.user.dao.CountingConnectionMaker;
-import com.learn.tobyspring.user.dao.DConnectionMacker;
-import com.learn.tobyspring.user.dao.UserDao;
+import com.learn.tobyspring.chapter1.user.dao.UserDao;
 import com.mysql.cj.jdbc.Driver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

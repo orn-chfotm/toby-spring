@@ -1,10 +1,10 @@
-package com.learn.tobyspring.user.dao;
+package com.learn.tobyspring.chapter1.user.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class NConnectionMacker implements ConnectionMaker {
+public class DConnectionMacker implements ConnectionMaker {
     @Override
     public Connection makeConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");

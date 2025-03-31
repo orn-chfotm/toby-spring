@@ -1,6 +1,6 @@
-package com.learn.tobyspring.user.dao;
+package com.learn.tobyspring.chapter1.user.dao;
 
-import com.learn.tobyspring.user.domain.User;
+import com.learn.tobyspring.chapter1.user.domain.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -12,7 +12,7 @@ public class UserDaoTest {
         // ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
 
         // Xml Bean 등록 방식
-        ApplicationContext ac = new GenericXmlApplicationContext("/applicationContext.xml");
+        ApplicationContext ac = new GenericXmlApplicationContext("/chapter1/applicationContext.xml");
 
         // 루트 패키지를 기점을 찾고 싶을 경우. (Java 클래스와 동일한 패키지 안에서 검색 - hint)
         // ApplicationContext ac = new GenericXmlApplicationContext("applicationContext.xml");
