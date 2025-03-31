@@ -30,6 +30,9 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.30'
     implementation 'com.h2database:h2'
 
+    implementation 'org.slf4j:slf4j-api'
+    implementation 'ch.qos.logback:logback-classic'
+
     implementation 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
