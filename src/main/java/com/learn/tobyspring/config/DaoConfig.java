@@ -19,7 +19,7 @@ public class DaoConfig {
         return new UserDao(dataSource());
     }
 
-    /* CountingConnectionMaker 데코레이터 패턴의 일종
+    /* CountingConnectionMaker
     @Bean
     public ConnectionMaker connectionMaker() {
         return new CountingConnectionMaker(realConnectionMaker());
