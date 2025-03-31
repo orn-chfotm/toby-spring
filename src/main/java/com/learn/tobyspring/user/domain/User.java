@@ -1,4 +1,4 @@
-package com.learn.tobyspring.user.dao;
+package com.learn.tobyspring.user.domain;
 
 public class User {
     private String id;

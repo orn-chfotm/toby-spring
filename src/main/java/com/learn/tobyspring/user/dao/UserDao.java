@@ -1,26 +1,21 @@
 package com.learn.tobyspring.user.dao;
 
+import com.learn.tobyspring.user.domain.User;
+
+import javax.sql.DataSource;
 import java.sql.*;
 
 public class UserDao {
+    // Datasource 도입으로 connectionMaker 를 대체
+    // private ConnectionMaker connectionMaker;
+    private DataSource dataSource;
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
-        User user = new User();
-        user.setId("chfotm");
-        user.setName("김동현");
-        user.setPassword("notmarried");
-
-        userDao.add(user);
-
-        System.out.println(user.getId());
+    public UserDao(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:23306/tobyspringdb", "root", "root"
-        );
+        Connection conn = dataSource.getConnection();
 
         PreparedStatement ps = conn.prepareStatement(
                 "insert into users(id, name, password) values(?, ?, ?)"
@@ -35,10 +30,7 @@ public class UserDao {
     }
 
     public User get(String id) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:23306/tobyspringdb", "root", "root"
-        );
+        Connection conn = dataSource.getConnection();
 
         PreparedStatement ps = conn.prepareStatement(
                 "select * from users where id = ?"
@@ -47,12 +39,6 @@ public class UserDao {
 
         ResultSet rs = ps.executeQuery();
         rs.next();
-        ResultSetMetaData metaData = rs.getMetaData();
-        int columnCount = metaData.getColumnCount();
-        System.out.println("columnCount = " + columnCount);
-        for (int i = 0; i < columnCount; i++) {
-            System.out.println("컬럼 :: " + i + metaData.getColumnName(i) + " :: " + metaData.getColumnTypeName(i));
-        }
 
         User user = new User();
         user.setId(rs.getString("id"));
@@ -65,4 +51,12 @@ public class UserDao {
 
         return user;
     }
+
+    /* Datasource 도입으로 connectionMaker 를 대체
+    public void setConnectionMaker(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }*/
+
+    /* Bean 생성자 DI 도입으로 대체 - XML 주입 방식 사용되는 Setter */
+    public void setDataSource(DataSource dataSource) { this.dataSource = dataSource; }
 }
