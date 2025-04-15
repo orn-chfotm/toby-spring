@@ -30,7 +30,7 @@ public class UserDao {
         conn.close();
     }
 
-    public User get(String id) throws ClassNotFoundException, SQLException {
+    public User get(String id) throws SQLException {
         Connection conn = dataSource.getConnection();
 
         PreparedStatement ps = conn.prepareStatement(

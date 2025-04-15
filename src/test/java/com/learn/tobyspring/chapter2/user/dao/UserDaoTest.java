@@ -5,12 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class UserDaoTest {
+public class UserDaoTest {
 
     @Test
     @DisplayName("회원 등록, 검색 테스트")
@@ -64,6 +66,19 @@ class UserDaoTest {
         userDao.add(user4);
         assertThat(userDao.getCount()).isEqualTo(4);
 
+    }
+
+    @Test
+    public void getUserFailure() throws SQLException {
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            ApplicationContext context = new GenericXmlApplicationContext("chapter2/applicationContext.xml");
+
+            UserDao userDao = context.getBean("userDao", UserDao.class);
+            userDao.deleteAll();
+            assertThat(userDao.getCount()).isEqualTo(0);
+
+            userDao.get("unknown_id");
+        });
     }
 
 
